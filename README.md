@@ -5,3 +5,4 @@ It takes the `OF`, `F` and `S` sheets and transfer them into the newer versions.
 
 ## Future work
 Add automatic password, currently not added due to the repo being public
+Add more versions (3.1, 2.2?)
