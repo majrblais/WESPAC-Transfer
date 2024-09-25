@@ -1,12 +1,12 @@
 # WESP-AC Data Migration: Version 1.1 to 3.4
 
 This repository contains a Python script designed to migrate data from WESP-AC version 1.1 to version 3.4. The script reads values from specified cells in the 1.1 version and writes them into the appropriate cells in version 3.4, handling both sheet-to-sheet and cross-sheet transfers. The mapping of cells has been carefully designed to accommodate changes between the versions.
-
+A password variable is available for customization, allowing you to change the password without manual input. Currently, the password is hardcoded, but the option to display a pop-up window for manual password entry is available if needed.
 ## Missing/Extra Data from 1.1 to 3.4
 
 - In version 1.1, **OF1** (Wetland Herbaceous Area) is not used in 3.4.
-- In version 3.4, both **OF1** and **OF2** (Province, Ponded Area Within 1 km) are missing.
-- In version 1.1, **OF16** (Flood Zone) and **OF17** (Flood Damage) are combined into **OF17** (Flood Damage from Non-tidal Waters) in 3.4, and logic was used to replace values.
+- In version 3.4, both **OF1** and **OF2** (Province, Ponded Area Within 1 km) are extra.
+- In version 1.1, **OF16** (Flood Zone) and **OF17** (Flood Damage) are combined into **OF17** (Flood Damage from Non-tidal Waters) in 3.4, some logic was used to replace values.
 - In version 1.1, **OF18** (Relative Elevation in Watershed) is a multiple-choice answer, while in 3.4 it is a float between `0` and `1.0`. We replace the options with `0`, `0.33`, and `0.66`.
 - In version 1.1, **OF20** (Erosion Potential Upslope) is not used in version 3.4.
 - In version 1.1, **OF28** (Growing Degree Days) is a multiple-choice option, while in version 3.4 it is an integer. We used the average of the multiple-choice answer.
@@ -36,8 +36,8 @@ This repository contains a Python script designed to migrate data from WESP-AC v
 	- **OF7** D35 in version 1.1 -> D44 in version 3.4
 	- **OF8** D37 to D41 in version 1.1 -> D47 to D51 in version 3.4
 	- **OF9** D46 to D50 in version 1.1 -> D54 to D58 in version 3.4
-	- **OF11** In the **F sheet** of 1.1, **D302 to D304** are equal to **D61 to D63** in the **OF sheet** of 3.4.
 	- **OF10** D52 to D57 in version 1.1 -> D66 to D71 in version 3.4
+	- **OF11** In the **F sheet** of 1.1, **D302 to D304** are equal to **D61 to D63** in the **OF sheet** of 3.4.
 	- **OF12** D58 in version 1.1 -> D73 in version 3.4
 	- **OF13** D60 to D66 in version 1.1 -> D75 to D81 in version 3.4
 	- **OF14** D68 to D73 in version 1.1 -> D83 to D88 in version 3.4
@@ -58,7 +58,7 @@ This repository contains a Python script designed to migrate data from WESP-AC v
 	- **OF29** D142 to D146 in version 1.1 -> D153 to D158 in version 3.4
 	- **OF30-OF32** D147 to D149 in version 1.1 -> D160 to D162 in version 3.4
 	- **OF33-OF37** D150 to D154 in version 1.1 -> D164 to D168 in version 3.4
-	- **OF38** In the **F sheet** of 1.1, **D272 to D275** are equal to **D171 to D174** in the **OF sheet** of 3.4.
+	- **OF38** Is in the **F sheet** of 1.1, **D272 to D275** are equal to **D171 to D174** in the **OF sheet** of 3.4.
 
    - **F Sheet**:
 	- **F1** D5 to D8 in version 1.1 -> D10, D7, D8, D11 in version 3.4

@@ -1,5 +1,9 @@
 # WESP-AC Version 3.0 to 3.4 Data Transfer
 
+This repository contains a Python script designed to migrate data from WESP-AC version 3.0 to version 3.4. The script reads values from specified cells in the 1.1 version and writes them into the appropriate cells in version 3.4, handling both sheet-to-sheet and cross-sheet transfers. The mapping of cells has been carefully designed to accommodate changes between the versions.
+
+A password variable is available for customization, allowing you to change the password without manual input. Currently, the password is hardcoded, but the option to display a pop-up window for manual password entry is available if needed.
+
 
 ## Missing/Extra Data from 3.0 to 3.3/3.4
 - In version 3.2, **OF28** (Fish Access or Use) spans rows 151–154. In version 3.4, **OF28** (Anadromous Species Access or Use) is consolidated into rows 149–150. If either value from the consecutive rows in version 3.2 (e.g., rows 151 or 152) is 1, the corresponding row in version 3.4 (row 149) is set to 1. If neither value is 1, the row in version 3.4 is set to 0. This same logic applies to rows 153 and 154 in version 3.2, which are combined into row 150 in version 3.4.
@@ -24,7 +28,8 @@ The script performs the following operations:
      - **OF1-OF18**: Data from D5 in version 3.0 is shifted by 1 row when copying to D6 in version 3.4 until D108.
      - **OF19**: D110 to D111 in version 3.0 map directly to D110 to D111 in version 3.4.
      - **OF20-27**: Rows D112 to D150 in version 3.0 are shifted up by 1 in version 3.4.
-     - **OF28**: Special case: Rows D151 to D154 in version 3.0 are merged into D149 and D150 in version 3.4 based on their values.
+     - **OF22-OF23**: Rows D129-D132 were shifted up by 3 while rows D133 to D136 were shifted down by 5.
+	 - **OF28**: Special case: Rows D151 to D154 in version 3.0 are merged into D149 and D150 in version 3.4 based on their values.
      - **OF29-OF33**: Rows D156 to D169 are copied from D152 to D165 in version 3.4, with an empty cell at D169 in 3.0.
      - **OF33-OF38**: D170 to D179 in version 3.0 map to D165 to D174 in version 3.4.
 
@@ -32,8 +37,7 @@ The script performs the following operations:
      - **F1-F7**: Data from row D3 to D52 in version 3.0 is shifted by 2 rows when copying to D5 in version 3.4.
      - **F8-F14**: Rows D53 to D93 in version 3.0 are shifted up by 3 rows in version 3.4.
      - **F10**: Row D66 to D72 in version 3.0 are shifted up by 6 rows in version 3.4.
-     - **F11**: Row D73 to D76 in version 3.0 are shifted down by 6 rows in version 3.4.
-
+     - **F11**: Row D73 to D76 in version 3.0 are shifted down by 4 rows in version 3.4.
      - **F15-F19**: Rows D94 to D118 in version 3.0 are shifted up by 4 rows in version 3.4.
      - **F20-F21**: Rows D119 to D129 in version 3.0 are shifted up by 5 rows in version 3.4.
      - **F22-31**: Rows D131 to D189 in version 3.0 are shifted by 4 rows in version 3.4.
@@ -69,8 +73,3 @@ The script performs the following operations:
 
 - `xlwings`: Used to read and manipulate Excel files.
 - Ensure that you have Excel installed on your system for `xlwings` to function properly.
-
-You can install the required dependencies using:
-
-```bash
-pip install xlwings
